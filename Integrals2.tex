@@ -1,0 +1,309 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyphenat}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage[skip=10pt]{parskip}
+\usepackage [spanish]{babel}
+\usepackage [autostyle, english = american]{csquotes}
+\MakeOuterQuote{"}
+
+\pgfplotsset{compat = newest}
+\begin{document}
+\pretolerance=2000
+\section{Funções de mais de uma variável}
+\subsection*{Introdução}
+\par Vimos que uma função $f:\mathbb{R}\rightarrow\mathbb{R}$ é uma \textit{regra} que recebe uma entrada, $x\in\mathbb{R}$, e nos dá uma única saída, $f(x)\in \mathbb{R}.$
+\par Agora voltamos nossa atenção para funções de duas variáveis, ou seja, funções onde a entrada consiste em um par de números, $(x,y)\in{R}^2$, e cuja saída é um número único $f(x,y)\in{R}.$
+\par Em particular, estaremos principalmente preocupados com funções de duas variáveis onde as variáveis são \textit{independentes}, ou seja, o valor de \textbf{x} pode ser escolhido independentemente do valor de \textbf{y} e vice-versa. Como veremos, as funções de duas variáveis ocorrem frequentemente na economia e em outros campos em que desejamos aplicar técnicas matemáticas. Dois exemplos importantes de tais funções da economia são:
+\begin{itemize}
+    \item A \textit{função de produção} de uma empresa, \textit{$\textbf{q(k,l)}$}, fornece a quantidade que ela produz ao usar k unidades de capital e l unidades de trabalho.
+    \item A \textit{função de utilidade} de um consumidor, \textit{$\textbf{u(x\textsubscript{1},x\textsubscript{2})}$}, descreve quanta \textit{utilidade} um consumidor deriva de um bundle \textit{\textbf{(x1,x2)}} de dois bens. Como tal, permite-nos comparar as preferências do consumidor quando confrontado com diferentes combinações destes dois bens.
+\end{itemize}
+\par Observe que a teoria que consideramos aqui se estende ao caso geral em que a entrada consiste em \textbf{n} números \textit{\textbf{(x\textsubscript{1},x\textsubscript{2},…,x\textsubscript{n})}}. Esta extensão para funções de \textbf{n} variáveis $(n \geq 3)$  deve ser óbvia e por isso não gastamos muito tempo com isso aqui. No entanto, embora estejamos lidando principalmente com o caso de duas variáveis, ocasionalmente consideraremos funções de mais de duas variáveis.
+\subsection*{Funções de duas variáveis}
+\par Seja $f:\mathbb{R\textsuperscript{2}}\to\mathbb{R}$ uma função das duas variáveis independentes \textbf{x} e \textbf{y}. Podemos pensar em qualquer entrada \textit{\textbf{(a,b)}} como um ponto no plano \textit{\textbf{(x,y)}} e a saída será o valor correspondente de \textit{\textbf{(f)}}, ou seja, \textit{\textbf{f(a,b)}}, que podemos tomar como o número \textbf{c}.
+\par Ou seja, em geral, cada ponto \textit{\textbf{(x,y)}} no plano \textit{\textbf{(x,y)}} terá uma saída dada pelo valor correspondente de $f$, ou seja, \textit{\textbf{f(x,y)}}, que podemos tomar como o valor de outra variável z. Como tal, para visualizar uma função de duas variáveis, precisamos de três eixos, dois para representar as entradas, ou seja, \textit{\textbf{x}} e \textit{\textbf{y}}, e um para representar a saída, ou seja, \textit{\textbf{z}}.
+\par Se fizermos isso para todas as entradas possíveis \textit{\textbf{$(x,y)\in\mathbb{R}\textsuperscript{2}$}} obtemos uma superfície no espaço tridimensional cuja equação é dada por \textit{\textbf{$z = f(x,y)$}}.
+\subsection*{Planos}
+\par O tipo mais simples de função de duas variáveis é aquele que é linear em \textit{\textbf{x}} e \textit{\textbf{y}}, ou seja, onde
+    \begin{equation}
+        f(x,y) = ax + by
+    \end{equation}
+para algumas constantes \textit{\textbf{a}} e \textit{\textbf{b}}. Tais funções representam planos e, em geral, qualquer superfície que tenha uma equação da forma
+    \begin{equation}
+        ax + by + cz = d
+    \end{equation}
+onde pelo menos uma das constantes \textit{\textbf{a}}, \textit{\textbf{b}} e \textit{\textbf{c}} é diferente de zero representará um plano. Os tipos importantes de planos são, basicamente, aqueles que se enquadram nas seguintes categorias:
+\begin{itemize}
+    \item Os planos \textit{\textbf{(x,y)}}, \textit{\textbf{(y,z)}} e \textit{\textbf{(z,x)}} que têm equações z=0, x=0 e y=0 respectivamente.(Estes são os planos ilustrados abaixo em (a), (b) e (c), respectivamente.)
+    \item Planos paralelos aos planos \textit{\textbf{(x,y)}}, \textit{\textbf{(y,z)}} e \textit{\textbf{(z,x)}} que, para alguma constante \textit{\textbf{c}}, terão as equações $z = c$, $x = c$ e $y = c$ respectivamente. (Estes são os outros planos ilustrados abaixo em (a), (b) e (c), respectivamente.)
+\end{itemize}
+
+\begin{figure}[ht]
+    \includegraphics[width=\linewidth]{fig1.png}
+    \caption{(a), (b), (c)}
+    \label{fig1}
+\end{figure}
+\section{Planos horizontais e contornos}
+\subsection*{Introdução}
+\par Uma maneira de visualizar uma superfície é observar seus contornos, que são as curvas de interseção que surgem quando observamos os pontos de interseção de uma superfície com planos paralelos ao plano \textit{\textbf{(x,y)}}.
+
+Para encontrar os contornos, tomamos um plano paralelo ao plano \textit{\textbf{(x,y)}}, digamos o plano $z = c$, e encontramos a curva de interseção entre ele e a superfície $z = f(x,y)$, ou seja, a curva com a equação $c = f(x,y)$. Esta curva é o contorno $z = c$, ou seja, o conjunto de pontos \textit{\textbf{(x,y)}} que dão $z = c$ quando os colocamos na equação $z = f(x,y)$.
+\subsubsection*{Exemplo}
+O contorno $z = 2$ da superfície $z = x - y + 4$. E também para $z = 4$ e $z = 6$.
+\par Para encontrar o contorno $z = 2$ da superfície $z = x - y + 4$ precisamos encontrar a curva de interseção, que neste caso é dada por
+    \begin{equation}
+         2 = x - y + 4
+    \end{equation}
+\par Reorganizando isso dá a equação $y = x + 2$ que é a equação de uma linha reta.
+Da mesma forma, encontramos que:
+\begin{itemize}
+    \item Para $z = 4$, a curva de interseção é dada por $4 = x - y + 4$ que nos dá $y = x$.
+
+    \item Para $z = 6$, a curva de interseção é dada por $6 = x - y + 4$ que nos dá $y = x - 2$.
+\end{itemize}
+Assim, vemos a partir dessas equações que esses dois contornos são linhas retas também.
+
+\begin{figure}[ht]
+    \centering
+\begin{tikzpicture}
+    \begin{axis}[
+        grid = both,
+        major grid style = {lightgray},
+        minor grid style = {lightgray!25},
+    ]
+            \addplot[
+                domain = 0:30,
+                samples = 200,
+                smooth,
+                thick,
+                red,
+            ] {x + 2};
+            \addplot[
+                domain = 0:30,
+                samples = 200,
+                smooth,
+                thick,
+                green,
+            ] {x};
+            \addplot[
+                domain = 0:30,
+                samples = 200,
+                smooth,
+                thick,
+                blue,
+            ] {x - 2};
+            \legend{
+                x + 2, 
+                x,
+                x - 2,
+            }
+    \end{axis}
+\end{tikzpicture}
+\end{figure}
+\subsubsection*{Exemplo 2}
+Encontre as equações dos contornos $z = -10$, $z = 0$ e $z = 10$ da superfície $z = 4x + 2y - 2$ e esboce-as no plano \textit{\textbf{(x,y)}} rotulando claramente o valor de z que está associado a cada contorno.
+\begin{figure}[h!]
+    \centering
+\begin{tikzpicture}
+    \begin{axis}[
+        grid = both,
+        major grid style = {lightgray},
+        minor grid style = {lightgray!25},
+    ]
+            \addplot[
+                domain = 0:30,
+                samples = 200,
+                smooth,
+                thick,
+                red,
+            ] {-2*x - 4};
+            \addplot[
+                domain = 0:30,
+                samples = 200,
+                smooth,
+                thick,
+                green,
+            ] {-2*x + 1};
+            \addplot[
+                domain = 0:30,
+                samples = 200,
+                smooth,
+                thick,
+                blue,
+            ] {-2*x + 6};
+            \legend{
+                -2x - 4, 
+                -2x + 1,
+                -2x + 6,
+            }
+    \end{axis}
+\end{tikzpicture}
+\end{figure}
+\subsubsection*{Exemplo 3}
+Para encontrar o contorno $z = 16$ da superfície $z = x\textsuperscript2 + y\textsuperscript2$ precisamos encontrar a curva de interseção que, neste caso, é simplesmente
+    \begin{equation}
+         16 = x\textsuperscript2 + y\textsuperscript2
+    \end{equation}
+Esta é a equação de um círculo, centrado na origem, com um raio de quatro.
+Para encontrar os contornos $z = c$ nos três casos indicados, basta descobrir qual é a curva nos três casos.
+\par Então, temos o seguinte.
+\begin{itemize}
+    \item Se $c > 0$, o contorno é um círculo, centrado na origem, com raio $\sqrt{c}$.
+    \item Se $c = 0$, o contorno é o ponto \textbf{(0,0)} pois esta é a única solução para a equação $x\textsuperscript2 + y\textsuperscript2 = 0$.
+    \item Se $c < 0$, não há contornos, pois sabemos que $x\textsuperscript2 + y\textsuperscript2 \geq 0$ para todos os valores de \textbf{x} e \textbf{y}.
+\end{itemize}
+Em particular, observe que $z = 0$ é o menor valor de \textbf{z} que surge de um ponto nesta superfície.
+\section{Planos verticais e as seções de uma superfície}
+\subsection*{Introdução}
+Outra maneira de visualizar uma superfície é observar suas seções, que são as curvas de interseção que surgem quando observamos os pontos de interseção de uma superfície com planos perpendiculares ao plano \textit{\textbf{(x,y)}}. Para encontrar as seções, tomamos um plano perpendicular ao plano \textit{\textbf{(x,y)}} e encontramos a curva de interseção entre ele e a superfície $z = f(x,y)$. Em particular, neste curso, só precisaremos considerar seções que surgem de planos que são paralelos ao plano \textit{\textbf{(x,z)}} (ou seja, $y = c$ para alguma constante \textbf{(c)}) ou paralelos ao plano \textit{\textbf{(y,z)}} (isto é, $x = c$ para alguma constante \textbf{(c)}).
+\par Como tal, as seções mais fáceis de esboçar são aquelas que obtemos quando consideramos os planos \textit{\textbf{(x,z)}} e \textit{\textbf{(y,z)}} que são ambos perpendiculares ao plano \textit{\textbf{(x,y)}}. Em particular, descobrimos que a seção que obtemos do:
+    \begin{itemize}
+        \item Plano \textit{\textbf{(x,z)}}, que tem a equação $y = 0$, é a curva de interseção entre ele e a superfície $z = f(x,y)$, ou seja, a curva com a equação $z = f(x,0)$.
+        \item Plano \textit{\textbf{(y,z)}}, que tem a equação $x = 0$, é a curva de interseção entre ele e a superfície $z = f(x,y)$, ou seja, a curva com a equação $z = f(0,y)$.
+    \end{itemize}
+    Vejamos como são essas seções no caso das duas superfícies que consideramos acima quando estávamos procurando por contornos.
+\subsubsection*{Exemplo}
+Para encontrar as seções da superfície $z = x - y + 4$ precisamos encontrar as curvas de interseção, que neste caso são dadas pelo seguinte.
+\begin{itemize}
+    \item Para a seção \textit{\textbf{(x,z)}}, temos $y = 0$ e assim a curva de interseção é dada por $z = x + 4$ e esta é uma linha reta no plano \textit{\textbf{(x,z)}}.
+    \item Para a seção \textit{\textbf{(y,z)}}, temos $x = 0$ e assim a curva de interseção é dada por $z = -y + 4$ e esta é uma linha reta no plano \textit{\textbf{(y,z)}}.
+\end{itemize}
+\begin{figure}[ht]
+    \centering
+\begin{tikzpicture}
+    \begin{axis}[
+        grid = both,
+        major grid style = {lightgray},
+        minor grid style = {lightgray!25},
+    ]
+            \addplot[
+                domain = -10:10,
+                samples = 200,
+                smooth,
+                thick,
+                red,
+            ] {x + 4};
+            \addplot[
+                domain = -10:10,
+                samples = 200,
+                smooth,
+                thick,
+                green,
+            ] {-x + 4};
+            \legend{
+                x + 4, 
+                -y + 4,   
+            }
+    \end{axis}
+\end{tikzpicture}
+\end{figure}
+\subsubsection*{Exemplo 2}
+Para encontrar as seções da superfície $z = 4x + 2y - 2$ precisamos encontrar as curvas de interseção, que neste caso são dadas pelo seguinte.
+\begin{itemize}
+    \item Para a seção \textit{\textbf{(x,z)}}, temos $y = 0$ e assim a curva de interseção é dada por $z = 4x - 2$ e esta é uma linha reta no plano \textit{\textbf{(x,z)}}.
+    \item Para a seção \textit{\textbf{(y,z)}}, temos $x = 0$ e assim a curva de interseção é dada por $z = 2y - 2$ e esta é uma linha reta no plano \textit{\textbf{(y,z)}}.
+\end{itemize}
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+        grid = both,
+        major grid style = {lightgray},
+        minor grid style = {lightgray!25},
+    ]
+            \addplot[
+                domain = -10:10,
+                samples = 200,
+                smooth,
+                thick,
+                red,
+            ] {4*x - 2};
+            \addplot[
+                domain = -10:10,
+                samples = 200,
+                smooth,
+                thick,
+                green,
+            ] {2*x - 2};
+            \legend{
+                4x - 2, 
+                2x - 2,,   
+            }
+    \end{axis}
+\end{tikzpicture}
+\end{figure}
+\section{Diferenciação parcial}
+\subsection*{Introdução}
+Vimos como derivar funções de uma variável e, talvez sem surpresa, também podemos diferenciar funções de duas variáveis usando a diferenciação parcial para produzir derivadas parciais.
+
+\par De certa forma, isso será semelhante ao que vimos quando diferenciamos funções de uma variável para obter suas derivadas, mas como agora temos duas variáveis para lidar, as coisas ficam um pouco mais complicadas.
+\par Considere uma função de duas variáveis independentes, $f(x,y)$.
+
+Para um valor fixo de \textbf{y}, digamos $y = y\textsubscript{0}$, podemos olhar para a função $g(x) = f(x,y\textsubscript{0})$ que agora é uma função apenas de \textbf{x}. Claramente, a taxa de variação de $g(x)$ em relação a \textbf{x} é apenas a derivada dessa função em relação a \textbf{x}.
+\par Mas, o que acontece quando queremos calcular a taxa de variação de $f(x,y)$ em relação a \textbf{x} para qualquer valor fixo de \textbf{y}? Para fazer isso, evitamos especificar um valor particular de \textbf{y} apenas assumindo que \textbf{y} é uma constante e diferenciando em relação a \textbf{x}.
+\par Então, dada uma função $f(x,y)$ denotamos a operação de derivar $f$ em relação a \textbf{x} mantendo \textbf{y} constante por
+\begin{equation}
+    \frac{\partial f}{\partial x} \textrm{ ou, a alternativa }   f\textsubscript{x}(x,y)
+\end{equation}
+e chamamos isso de derivada parcial de $f(x,y)$ em relação a \textbf{x}.
+
+\par De maneira semelhante, podemos definir a derivada parcial de $f(x,y)$ em relação a \textbf{y}, denotada por
+\begin{equation}
+    \frac{\partial f}{\partial y} \textrm{ ou, a alternativa }   f\textsubscript{y}(x,y)
+\end{equation}
+\par \textbf{Nota:} Usamos o "curly-d", ou seja, "$\partial$", para derivadas parciais em vez do "straight-d" normal, ou seja, "d", que se encontra na notação $\frac{dg}{dx}$ para a derivada de uma função $g(x)$ de uma variável. Veremos por que é importante manter essas duas noções de diferenciação separadas mais adiante.
+\subsection*{Derivadas parciais e seções}
+Claramente, a derivada parcial de $f(x,y)$ em relação a \textbf{x}, ou seja, o resultado da diferenciação de $f(x,y)$ em relação a \textbf{x} mantendo \textbf{y} constante, será outra função de \textbf{x} e \textbf{y} que temos chamado $fx(x,y)$. Mas, o que essa derivada parcial representa?
+\par Com efeito, quando consideramos a função $f(x,y)$ para algum valor fixo de \textbf{y}, digamos \textbf{y\textsubscript{0}}, estamos olhando para a seção $y = y\textsubscript{0}$ da curva $z = f(x,y)$, ou seja, a seção dada por a equação $z = f(x,y\textsubscript{0})$ que se encontra em um plano que tem $y = y\textsubscript{0}$ e é paralelo ao plano \textit{\textbf{(x,z)}}.
+\par Então, quando diferenciamos $f(x,y\textsubscript{0})$ em relação a \textbf{x}, estamos encontrando o gradiente desta seção, ou seja, ele nos diz como $z = f(x,y\textsubscript{0})$ está variando com \textbf{x}.
+\par Consequentemente, essa derivada parcial está nos dizendo algo sobre o gradiente da superfície quando estamos no ponto $(x,y\textsubscript{0})$ e estamos "olhando" na direção \textbf{x}.
+\subsection*{Encontrando derivadas parciais}
+Calcular as derivadas parciais de $f(x,y)$ é apenas um pouco mais difícil do que encontrar a derivada de uma função de uma variável.
+
+\par Lembrando que a derivada parcial de uma função $f(x,y)$ em relação a \textbf{x}, ou seja, $f\textsubscript{x}(x,y)$, é apenas a derivada de $f(x,y)$ em relação a \textbf{x} mantendo \textbf{y} constante, para calcular $f\textsubscript{x}(x,y)$ tratamos qualquer ocorrência de \textbf{y} em $f(x,y)$ como se fosse uma constante e diferenciamos em relação a \textbf{x}.
+\par Dado que $f(x,y) = x\textsuperscript{2}y + 5xy\textsuperscript{3} + y\textsuperscript{2}$, encontraremos $f\textsubscript{x}(x,y)$ e $f\textsubscript{y}(x,y)$
+\par Para encontrar $f\textsubscript{x}(x,y)$, tratamos \textbf{y} como se fosse uma constante e digamos que essa constante seja \textbf{c}. Então, temos uma função de uma variável dada por
+\begin{equation}
+    g(x) = f(x,c) = cx\textsuperscript{2} + 5c\textsuperscript{3}x + c\textsuperscript{2}
+\end{equation}
+e derivando isso em relação a \textbf{x} dá
+\begin{equation}
+    \frac{dg}{dx} = 2cx + 5c\textsuperscript{3}
+\end{equation}
+Mas, \textbf{c} é a constante que estamos usando para representar \textbf{y} e assim substituindo todos os \textit{'c's} por \textit{'y's} que temos
+\begin{equation}
+    \frac{\partial f}{\partial x} = 2xy + 5y\textsuperscript{3}
+\end{equation}
+que é a derivada parcial de $f(x,y)$ em relação a \textbf{x}.
+\par Para encontrar $f\textsubscript{y}(x,y)$, tratamos \textbf{x} como se fosse uma constante e digamos que essa constante seja \textbf{c}. Então, temos uma função de uma variável dada por
+\begin{equation}
+    \begin{split}    
+        g(y) = f(c,y)  & = c\textsuperscript{2}y + 5cy\textsuperscript{3} + y\textsuperscript{2} \\
+        \frac{dg}{dy} & =  c\textsuperscript{2} + 15cy\textsuperscript{2} + 2y \\
+        \frac{\partial f}{\partial x} & = x\textsuperscript{2} + 15xy\textsuperscript{2} + 2y
+    \end{split}
+\end{equation}
+\subsection*{Derivadas parciais e as regras de diferenciação}
+Até agora, calculamos as derivadas parciais de funções muito simples de \textbf{x} e \textbf{y}. Mas, às vezes, precisaremos usar as regras da cadeia, do produto e do quociente ao calcular as derivadas parciais.
+
+\par Vejamos um exemplo para ver como isso é feito.
+\par Dado que
+\begin{equation}
+    f(x,y) = xe\textsuperscript{x + y\textsuperscript{2}} 
+\end{equation}
+Primeiro notamos que podemos escrever esta função como
+\begin{equation}
+    f(x,y) = (xe\textsuperscript{x})e\textsuperscript{y\textsuperscript{2}}
+\end{equation}
+e assim, para encontrar $fx(x,y)$, tratamos $e\textsuperscript{y\textsuperscript{2}}$ como uma constante e derivamos a função $xe\textsuperscript{x}$ usando a regra do produto para obter $xe\textsuperscript{x} + 1e\textsuperscript{x}$. Isso nos dá
+\begin{equation}
+    \frac{\partial f}{\partial x} = e\textsuperscript{y\textsuperscript{2}}(xe\textsuperscript{x} + e\textsuperscript{x}) = (x + 1)e\textsuperscript{x + y\textsuperscript{2}}
+\end{equation}
+Para encontrar $f\textsubscript{y}(x,y)$, tratamos $xe\textsuperscript{x}$ como uma constante e derivamos a função $e\textsuperscript{y\textsuperscript{2}}$ usando a regra da cadeia para obter $2ye\textsuperscript{y\textsuperscript{2}}$. Isso nos dá
+\begin{equation}
+    \frac{\partial f}{\partial y} = xe\textsuperscript{x}(2ye\textsuperscript{y\textsuperscript{2}}) = 2xye\textsuperscript{x+y\textsuperscript{2}}
+\end{equation}
+\end{document}
