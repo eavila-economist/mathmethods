@@ -306,4 +306,59 @@ Para encontrar $f\textsubscript{y}(x,y)$, tratamos $xe\textsuperscript{x}$ como 
 \begin{equation}
     \frac{\partial f}{\partial y} = xe\textsuperscript{x}(2ye\textsuperscript{y\textsuperscript{2}}) = 2xye\textsuperscript{x+y\textsuperscript{2}}
 \end{equation}
+\section{Regra da cadeia}
+\subsection*{Introdução}
+Às vezes, uma função de uma variável é definida com referência a uma função de duas variáveis.
+
+\par Por exemplo, suponha que o nível de produção, \textbf{q}, de uma firma dependa dos montantes \textbf{k} de capital e \textbf{l} de trabalho usados por meio da função $q(k,l)$. Suponha também que \textbf{k} e \textbf{l} mudem ao longo do tempo de alguma forma conhecida, de modo que tenhamos fórmulas para $k(t)$ e $l(t)$ onde \textbf{t} é um parâmetro de medição de tempo.
+
+\par Como podemos encontrar a taxa de variação da produção com o tempo?
+\par Dado que temos a função de produção $q(k,l)=kl$ onde \textbf{k} e \textbf{l} são funções do tempo, \textbf{t}, dado por
+\begin{equation}
+    \begin{split}        
+        k(t) & = 3 + 2t \\
+        l(t) & = 10 + 3t
+    \end{split}
+\end{equation}
+Neste caso, podemos calcular a produção em função do tempo encontrando explicitamente $Q(t) = q(k(t),l(t))$ que, neste caso, é
+\begin{equation}
+    \begin{split}        
+        Q(t) & = k(t)l(t) \\
+         & = (3 + 2t)(10 + 3t) \\
+         & = 30 + 11t + 6t\textsuperscript{2}
+    \end{split}
+\end{equation}
+E, em particular, agora podemos diferenciar isso para encontrar a taxa de variação da produção com o tempo, ou seja, temos
+\begin{equation}
+    \frac{dQ}{dt} = 11 - 12t
+\end{equation}
+Mais geralmente, suponha que nos seja dada uma função $f$ de duas variáveis \textbf{x} e \textbf{y}, ambas funções de \textbf{t}.
+\par Podemos pensar nisso como definindo uma função composta $F(t) = f(x(t),y(t))$.
+\par No caso de uma única variável, temos uma regra, ou seja, a regra da cadeia, que nos permite calcular a derivada de uma função composta. Surpreendentemente, talvez, exista uma regra semelhante para funções compostas de duas variáveis, como a que temos aqui, que também é conhecida como regra da cadeia. Diz que
+\begin{equation}
+    \frac{dF}{dx} = \frac{\partial f}{\partial x}\frac{dx}{dt} + \frac{\partial f}{\partial y}\frac{dy}{dt}
+\end{equation}
+Algumas vezes, neste contexto, chamamos $F'(t)$ de derivada total de $F(t)$ em relação a \textbf{t} (para distingui-la das derivadas parciais de $f$ em relação a \textbf{x} e \textbf{y}).
+\subsubsection*{Regra de cadeia Exemplo}
+Considere novamente a função de produção $q(k,l) = kl$ onde \textbf{k} e \textbf{l} são funções do tempo, \textbf{t}, dadas por
+\begin{equation}
+    \begin{split}        
+        k(t) & = 3 + 2t \\
+        l(t) & = 10 - 3t
+    \end{split}
+\end{equation}
+Neste caso, se novamente fizermos $Q(t) = q(k(t),l(t))$, a regra da cadeia afirma que
+\begin{equation}
+    \begin{split}        
+        \frac{dQ}{dt} & = \frac{\partial q}{\partial k}\frac{dk}{dt} + \frac{\partial q}{\partial l}\frac{dl}{dt} \\
+        & = (l)(2) + (k)(-3) \\
+        & = 2(10 - 3t) + 3(3 + 2t) \\
+        & = 11 - 12t
+    \end{split}
+\end{equation}
+\subsection{Funções explícitas}
+Uma equação $g(x,y)=c$ onde \textbf{c} é uma constante pode, em alguns casos, ser rearranjada (ou resolvida) para dar \textbf{y} como uma função explícita de \textbf{x}. Uma vez feito isso, podemos então derivar nossa expressão para \textbf{y} em relação a \textbf{x} para encontrar sua derivada, $y'(x)$.
+\par Mas, em geral, pode ser difícil ou impossível resolver a equação $g(x,y) = c$ para encontrar uma fórmula explícita para $y(x)$ como fizemos no exemplo anterior.
+
+No entanto, podemos [muitas vezes] ainda encontrar a derivada $y'(x)$, mesmo que não tenhamos uma expressão explícita para \textbf{y} em termos de \textbf{x}.
 \end{document}
