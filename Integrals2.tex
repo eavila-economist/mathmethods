@@ -5,6 +5,7 @@
 \usepackage{graphicx}
 \usepackage{pgfplots}
 \usepackage[skip=10pt]{parskip}
+\usepackage{enumitem}
 \usepackage [spanish]{babel}
 \usepackage [autostyle, english = american]{csquotes}
 \MakeOuterQuote{"}
@@ -411,4 +412,210 @@ Verifique se o ponto $(x,y) = (1/2,2)$ satisfaz esta equação e encontre o valo
 \end{equation}
 contanto que $3x\textsuperscript{2}y\textsuperscript{2} + 12x\textsuperscript{3}y + 2x \neq 0$.
 \par Assim, dado o ponto (1/2,2), podemos substituir esses valores em nossa expressão para $y'(x)$ para ver que o valor da derivada neste ponto é \textbf{6}.
+\section{Extensões da Regra da Cadeia}
+\subsection*{Introdução}
+\par Suponha, por exemplo, que \textbf{g} é uma função de duas variáveis \textbf{x} e \textbf{y}, ambas elas próprias funções de duas variáveis \textbf{k} e \textbf{l}.
+Podemos pensar nisso como a definição de uma função composta
+\begin{equation}
+    G(k,l) = g(x(k,l),y(k,l))
+\end{equation}
+e uma extensão da regra da cadeia nos garante que
+\begin{equation}
+    \begin{split}
+        \frac{\partial G}{\partial k} & = \frac{\partial g}{\partial x} \frac{\partial x}{\partial k} + \frac{\partial g}{\partial y} \frac{\partial y}{\partial k}  \\
+        \frac{\partial G}{\partial l} & = \frac{\partial g}{\partial x} \frac{\partial x}{\partial l} + \frac{\partial g}{\partial y} \frac{\partial y}{\partial l}
+    \end{split}
+    \end{equation}
+Para ver por que a fórmula da regra da cadeia para $G\textsubscript{k}(k,l)$ funciona, considere que se mudarmos \textbf{k} por uma pequena quantidade, \textbf{$\Delta k$}, mantendo \textbf{l} constante, a variação correspondente em $G(k,l)$ é dada por
+\begin{equation}
+    \Delta G \simeq \frac{\partial G}{\partial k} \Delta k
+\end{equation}
+mas aqui, existem duas maneiras pelas quais $G(k,l) = g(x(k,l),y(k,l))$ pode mudar com \textbf{k}.
+\begin{itemize}
+    \item Em primeiro lugar, \textbf{G} pode mudar com \textbf{k} porque \textbf{g} muda com \textbf{x} e \textbf{x} muda com \textbf{k}, vamos denotar essa mudança em \textbf{G} por $\Delta \textsubscript{x}G$. Neste caso, temos
+    \begin{equation}
+        \Delta \textsubscript{x}G \simeq \frac{\partial g}{\partial x}\Delta x
+    \end{equation}
+    como estamos mantendo \textbf{y} constante para ver como \textbf{F} muda com \textbf{x} e isso significa que
+    \begin{equation}
+        \Delta \textsubscript{x}G \simeq \frac{\partial g}{\partial x} \frac{\partial x}{\partial k}\Delta k
+    \end{equation}
+    como a mudança em \textbf{x}, \textbf{$\Delta x$}, está relacionada a uma mudança em \textbf{k} com \textbf{l} mantido constante por $\Delta x \simeq x\textsubscript{k}(k,l)\Delta k$.
+    \item Em segundo lugar, \textbf{G} pode mudar com \textbf{k} porque \textbf{g} muda com \textbf{y} e \textbf{y} muda com \textbf{k}, vamos denotar essa mudança em \textbf{G} por $\Delta \textsubscript{y}G$. Neste caso, temos
+    \begin{equation}
+        \Delta \textsubscript{y}G \simeq \frac{\partial g}{\partial y}\Delta y
+    \end{equation}
+    como estamos mantendo \textbf{x} constante para ver como \textbf{F} muda com \textbf{y} e isso significa que
+    \begin{equation}
+        \Delta \textsubscript{y}G \simeq \frac{\partial g}{\partial y} \frac{\partial y}{\partial k}\Delta k
+    \end{equation}
+    como a mudança em \textbf{y}, \textbf{$\Delta y$}, está relacionada a uma mudança em \textbf{k} com \textbf{l} mantido constante por $\Delta y \simeq y\textsubscript{k}(k,l)\Delta k$.
+\end{itemize}
+\par Assim, como a mudança total em \textbf{F} devido a essas duas mudanças é dada por
+\begin{equation}
+    \Delta G = \Delta\textsubscript{x}G + \Delta\textsubscript{y}G \simeq \frac{\partial g}{\partial x}\frac{\partial x}{\partial k}\Delta k + \frac{\partial g}{\partial y}\frac{\partial y}{\partial k}\Delta k
+\end{equation}
+agora podemos igualar nossas duas expressões para $\Delta G$ e dividir por $\Delta k$ para obter a regra da cadeia para $G\textsubscript{k}(k,l)$ que vimos acima.
+\par E, de maneira semelhante, se supusermos que $g(x,y,z) = c$ define \textbf{z} implicitamente como uma função de \textbf{x} e \textbf{y}, podemos usar essa forma da regra da cadeia para derivar as fórmulas
+\begin{equation}
+    \begin{split}
+        \frac{\partial z}{\partial x} = - \frac{\partial g/\partial x}{\partial g/\partial z} \\
+        \frac{\partial z}{\partial y} = - \frac{\partial g/\partial y}{\partial g/\partial z}
+    \end{split}
+\end{equation}
+contanto que $g\textsubscript{z}(x,y,z) \neq 0$.
+\par Essas fórmulas nos permitirão calcular as derivadas parciais de \textbf{z} em relação a \textbf{x} e \textbf{y}.
+\par De fato, para ver por que a fórmula para $z\textsubscript{x}(x,y)$ funciona, consideramos que se conhecêssemos a função, $z(x,y)$, que satisfizesse a equação $g(x,y,z) = c$, poderíamos encontrar uma nova função, $G(x,y)$, de \textbf{x} e \textbf{y} somente que é dada por
+\begin{equation}
+    G(x,y) = g(x,y,z(x,y))
+\end{equation}
+Então, usando a regra da cadeia, temos
+\begin{equation}
+    \begin{split}
+        \frac{\partial G}{\partial x} & = \frac{\partial g}{\partial x} \frac{dx}{dx} + \frac{\partial g}{\partial z}\frac{\partial z}{\partial x}\\
+        \frac{\partial G}{\partial y} & = \frac{\partial g}{\partial y} \frac{dx}{dx} + \frac{\partial g}{\partial z}\frac{\partial z}{\partial y}
+    \end{split}
+\end{equation}
+Mas, $G(x,y) = c$ onde \textbf{c} é uma constante e então também temos
+\begin{equation}
+    \begin{split}
+        \frac{\partial G}{\partial x} & = 0\\
+        \frac{dx}{dx} & = 1 \\
+        \frac{\partial G}{\partial x} & = 0\\
+        \frac{\partial G}{\partial y} & = 0\\
+        0 &= \frac{\partial g}{\partial x} + \frac{\partial g}{\partial z}\frac{\partial z}{\partial x}\\
+        \frac{\partial z}{\partial x} & = - \frac{\partial g/\partial x}{\partial g/\partial z} \\
+    \end{split}
+\end{equation}
+contanto que $g\textsubscript{z}(x,y,z) \neq 0$.
+\par Ou seja, $z\textsubscript{x}(x,y)$ pode ser facilmente encontrado usando as derivadas parciais de \textbf{c}. \textbf{(Mas, não se esqueça do sinal de menos!)}
+\subsubsection*{Exemplo}
+Suponha que \textbf{q} seja uma função de \textbf{k} e \textbf{l} definida implicitamente pela equação
+\begin{equation}
+    q\textsuperscript{3}k + k\textsuperscript{3}l + qk\textsuperscript{2}l= 3
+\end{equation}
+Encontre as derivadas parciais $q\textsubscript{k}(k,l)$ e $q\textsubscript{l}(k,l)$. Quais são os valores dessas derivadas parciais no ponto onde $k = 1$ e $l = 1$?
+\begin{equation}
+    \begin{split}
+        g(q,k,l) & = q\textsuperscript{3}k + k\textsuperscript{3}l + qk\textsuperscript{2}l  \textrm{ e } c = 3\\
+        \frac{\partial q}{\partial k} &= - \frac{\partial g}{\partial k}/\frac{\partial g}{\partial q} \\
+        \frac{\partial q}{\partial l} &= - \frac{\partial g}{\partial l}/\frac{\partial g}{\partial q} \\
+        \frac{\partial q}{\partial k} &= - \frac{q\textsuperscript{3} + 3k\textsuperscript{2}l + 2qkl}{3q\textsuperscript{2}k + k\textsuperscript{2}l}\\
+        \frac{\partial q}{\partial l} &= - \frac{k\textsuperscript{3} + qk\textsuperscript{2}}{3q\textsuperscript{2}k + k\textsuperscript{2}l}\\
+    \end{split}
+\end{equation}
+desde que $3q\textsuperscript{2}k + k\textsuperscript{2}l \neq 0$.
+\par Agora, para calcular essas derivadas parciais no ponto onde $(k,l) = (1,1)$, precisamos encontrar o valor correspondente de \textbf{q}. Isso pode ser feito observando que, quando temos $k = 1$ e $l = 1$, a equação se torna
+\begin{equation}
+    \begin{split}
+        q\textsuperscript{3} + q - 2 &= 0\\
+        (q - 1)(q\textsuperscript{2} + q + 2) &= 0
+    \end{split}
+\end{equation}
+para todo $q \in R$, vemos que $q = 1$ é a única solução para esta equação. Assim, o ponto que nos interessa tem coordenadas $(k,l,q) = (1,1,1)$ e, neste ponto, temos como os valores das derivadas parciais:
+\begin{equation}
+    \begin{split}
+        \frac{\partial q}{\partial k} &= - \frac{1 + 3 + 2}{3 + 1} = - \frac{6}{4} = - \frac{3}{2} \\
+        \frac{\partial q}{\partial l} &= - \frac{1 + 1}{3 + 1} = - \frac{2}{4} = - \frac{1}{2}
+    \end{split}
+\end{equation}
+\section{Funções Homogêneas e Teorema de Euler}
+\subsection*{Introdução}
+As funções homogêneas são importantes em economia, pois nos permitem capturar a ideia de "retornos à escala". Nesta seção veremos o que significa uma função ser homogênea e consideraremos um importante teorema sobre funções homogêneas. A primeira nos permitirá dar uma interpretação econômica das funções de produção homogêneas em termos de "retornos à escala" e a segunda nos permitirá considerar o significado econômico dos produtos marginais que podem ser derivados de tais funções de produção.
+\par Dizemos que uma função, $f(x,y)$, é homogênea de grau $r$ se
+\begin{equation}
+    f(\lambda x,\lambda y) = \lambda\textsuperscript{r}f(x,y)
+\end{equation}
+\subsubsection*{Exemplo}
+$f(x,y) = \sqrt[]{x} - \sqrt[]{y}$
+\par Substituindo \textbf{x} e \textbf{y} em $f(x,y)$ por $\lambda x$ e $\lambda y$ temos
+\begin{equation}
+    f(\lambda x,\lambda y)=\sqrt[]{\lambda x} + \sqrt[]{\lambda y} = \sqrt[]{\lambda} \sqrt[]{x} + \sqrt[]{\lambda} \sqrt[]{y} = \lambda(\sqrt[]{x} + \sqrt[]{y}) = \sqrt[]{\lambda}f(x,y)
+\end{equation}
+Como $\sqrt[]{\lambda} = \lambda\textsuperscript{1/2}$, comparando isso com a definição de homogeneidade, ou seja.
+\begin{equation}
+    f(\lambda x,\lambda y) = \lambda\textsuperscript{r}f(x,y)
+\end{equation}
+vemos que $r = 1/2$ e assim esta função é homogênea de grau meio.
+\subsubsection*{Exemplo 2}
+Substituindo x e y em $f(x,y)$ por $\lambda x$ e $\lambda y$ temos
+\begin{equation}
+    f(\lambda x,\lambda y) = (\lambda x) + (\lambda y)\textsuperscript{2} = \lambda x + \lambda\textsuperscript{2}y\textsuperscript{2}.
+\end{equation}
+Comparando isso com a definição de homogeneidade, ou seja, $f(\lambda x,\lambda y) = \lambda\textsuperscript{r}f(x,y)$ vemos que não há como escrever $\lambda x + \lambda\textsuperscript{2}y\textsuperscript{2}$ na forma $\lambda\textsuperscript{r}(x+y2)$ para qualquer r e, portanto, essa função não é homogênea.
+
+\par Em particular, isso significa que nem todas as funções são homogêneas.
+\subsection*{Retornos à Escala}
+Economicamente, podemos pensar em funções homogêneas como nos dizendo sobre como as saídas mudam se "aumentarmos" nossas entradas. Para ver por que, considere o que acontece se escalarmos nossas entradas por um fator de $\lambda$, ou seja, se aumentarmos nosso pacote de entradas, $(x,y)$, por um fator de $\lambda > 1$, obtemos o novo pacote de entradas $(\lambda x ,\lambda y)$.
+
+Agora, se nossas saídas são determinadas por uma função homogênea, $f(x,y)$, de grau $r$, podemos ver que a saída de nosso novo pacote, $(\lambda x,\lambda y)$, é dada por
+\begin{equation}
+    f(\lambda x,\lambda y) = \lambda\textsuperscript{r}f(x,y)
+\end{equation}
+ou seja, obteremos $\lambda\textsuperscript{r}$ vezes tanto quanto obtivemos do nosso pacote antigo, $(x,y)$. Ou seja, escalonar as entradas por $\lambda$ leva a um escalonamento da saída por $\lambda\textsuperscript{r}$ se nossa saída for determinada por uma função homogênea de grau $r$.
+
+\par Em particular, dada uma função que é homogênea de grau um, podemos ver que escalar nossas entradas por $\lambda > 1$  ou seja, indo do pacote de entradas $(x,y)$ para o pacote de entradas $(\lambda x,\lambda y)$ irá escalar nossa saída por $\lambda$ ou seja, indo de uma saída de $f(x,y)$ para uma saída de $\lambda f(x,y)$. Ou seja, obtemos \textit{retornos constantes de escala}, um aumento proporcional nos insumos leva ao mesmo aumento proporcional na produção.
+
+\par Claramente, dadas funções de grau $r > 0$, esta ideia pode ser estendida para cobrir funções com graus $r \neq 1$ como segue.
+\begin{itemize}
+    \item Se $r > 1$, obtemos retornos crescentes de escala, pois $\lambda > 1$ implica que $\lambda\textsuperscript{r} > \lambda$. Ou seja, um aumento proporcional nos valores de entrada leva a um aumento proporcional maior nos valores de saída.
+    \item Se $r = 1$, obtemos retornos \textit{constantes} à escala como vimos acima.
+    \item Se $r < 1$, obtemos retornos decrescentes de escala, pois $\lambda > 1$ implica que $\lambda\textsuperscript{r} < \lambda$. Ou seja, um aumento proporcional nos valores de entrada leva a um aumento proporcional menor nos valores de saída.
+\end{itemize}
+\subsubsection*{Exemplo}
+Uma empresa investe uma quantidade de capital, \textbf{k}, e trabalho, \textbf{l}, em seu processo de produção e isso produz um nível de produção de $q(k,l)$.
+
+\par Qual será o efeito sobre o nível de produção de quadruplicar a quantidade de capital e trabalho investido se a função de produção for homogênea de grau \textit{(a) 1/2, (b) 1 e (c) 3/2}?
+\par Quadruplicar a quantidade de capital e trabalho investido significa aumentar a cesta de investimentos de $(k,l)$ para $(4k,4l)$. Assim, se a função de produção for homogênea de grau r, o nível de produção irá de $q(k,l)$ para
+\begin{equation}
+    q(4k,4l) = \lambda\textsuperscript{r}q(k,l)
+\end{equation}
+Em particular, isso significa que se a função de produção for homogênea de grau
+\begin{enumerate}[label = \alph*)]
+    \item 1/2, a mudança será por um fator de $4\textsuperscript{1/2} = 2$ (ou seja, quadruplicar os insumos duplica a produção)
+    \item 1, a mudança será por um fator de $4\textsuperscript{1} = 4$ (ou seja, a quadruplicação dos insumos quadruplica a produção)
+    \item 3/2, a mudança será por um fator de $4\textsuperscript{3/2} = 8$ (ou seja, a quadruplicação de insumos óctupla a produção)
+\end{enumerate}
+gerando retornos decrescentes, constantes e crescentes de escala, respectivamente.
+\subsection*{Teorema de Euler}
+Agora nos voltamos para o chamado teorema de Euler, que diz o seguinte.
+
+\par Se $f(x,y)$ é uma função homogênea de grau r, então
+\begin{equation}
+    x\frac{\partial f}{\partial x} + y\frac{\partial f}{\partial y} = rf(x,y)
+\end{equation}
+\subsubsection*{Exemplo}
+A função $f(x,y) = x\textsuperscript{1/2}y\textsuperscript{1/2}$ é homogênea de grau um.
+\par Vamos verificar se o teorema de Euler vale para esta função.
+\begin{equation}
+    \begin{split}
+        \frac{\partial f}{\partial x} &= \frac{1}{2}x\textsuperscript{-1/2}y\textsuperscript{1/2} \\
+        \frac{\partial f}{\partial y} &= \frac{1}{2}x\textsuperscript{1/2}y\textsuperscript{-1/2} \\
+        x\frac{\partial f}{\partial x} + y\frac{\partial f}{\partial y} &= x(\frac{1}{2}x\textsuperscript{-1/2}y\textsuperscript{1/2}) + y(\frac{1}{2}x\textsuperscript{1/2}y\textsuperscript{-1/2})\\
+        &= \frac{1}{2}x\textsuperscript{1/2}y\textsuperscript{1/2} + \frac{1}{2}x\textsuperscript{1/2}y\textsuperscript{1/2} \\
+        &= x\textsuperscript{1/2}y\textsuperscript{1/2} \\
+        &= f(x,y) 
+    \end{split}
+\end{equation}
+e como o grau de homogeneidade desta função é um, temos $f(x,y)$ no lado direito do teorema de Euler. Assim, como essas duas expressões são iguais, vale o teorema de Euler.
+\subsection*{O significado econômico do teorema de Euler}
+Considere uma empresa que investe uma quantidade de capital, k, e trabalho, l, em seu processo de produção e isso produz um nível de produção de $q(k,l)$.
+
+\par Além disso, suponha que essa função de produção seja homogênea de grau um, ou seja, que tenhamos retornos constantes de escala. O teorema de Euler afirma então que
+\begin{equation}
+        k\frac{\partial q}{\partial k} + l\frac{\partial q}{\partial l} = q(k,l).
+\end{equation}
+Agora, $q\textsubscript{l}$ nos dá o produto marginal do trabalho, ou seja, mede a mudança na produção se mudarmos a quantidade de trabalho. Em particular, se usarmos mais uma unidade de trabalho, digamos, empregando mais um trabalhador, $q\textsubscript{l}$ nos diz a mudança resultante na produção.
+
+\par Assim, faz sentido dizer que esse trabalhador extra é responsável por essa mudança na produção e, portanto, se assumirmos que recompensamos os trabalhadores dando-lhes bens iguais à quantidade que produzem, faz sentido recompensar esse trabalhador com uma quantidade de bens dados por $q\textsubscript{l}$.
+
+\par Assim, se todos os trabalhadores produzem a mesma quantidade, ou seja, $q\textsubscript{l}$, e existem $l$ (ou seja, a quantidade de trabalho utilizada) trabalhadores, faz sentido que todos sejam recompensados com uma quantidade de bens igual a $q\textsubscript{l}$. Como tal, $l\textsubscript{ql}$ representa a quantidade total de bens que devem ser dados como recompensa aos trabalhadores (ou seja, o trabalho).
+
+\par Um argumento semelhante se aplica à quantidade $k\textsubscript{qk}$, ou seja, esta deve ser a quantidade total de bens que deve ser dada como recompensa aos provedores do capital.
+
+\par Consequentemente, o teorema de Euler nos diz que essas recompensas devem somar a quantidade total de bens produzidos, ou seja, todos os bens produzidos serão distribuídos entre os fornecedores de capital e os fornecedores de trabalho.
+
+\par Em resumo, isso diz o seguinte.
+
+\par Em uma empresa com retornos constantes de escala, se recompensarmos cada fator de produção (por exemplo, capital e trabalho) em um nível igual ao seu produto marginal, então a recompensa total para os fatores de produção será a quantidade produzida.
 \end{document}
