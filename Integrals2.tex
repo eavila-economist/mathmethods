@@ -361,4 +361,54 @@ Uma equação $g(x,y)=c$ onde \textbf{c} é uma constante pode, em alguns casos,
 \par Mas, em geral, pode ser difícil ou impossível resolver a equação $g(x,y) = c$ para encontrar uma fórmula explícita para $y(x)$ como fizemos no exemplo anterior.
 
 No entanto, podemos [muitas vezes] ainda encontrar a derivada $y'(x)$, mesmo que não tenhamos uma expressão explícita para \textbf{y} em termos de \textbf{x}.
+\par Para ver como derivar uma função definida implicitamente, considere que se conhecêssemos a função, $y(x)$, que satisfizesse a equação $g(x,y) = c$, poderíamos encontrar uma nova função, $G(x)$, de \textbf{x} somente que seria dado por $G(x) = g(x,y(x))$. Então, usando a regra da cadeia, teríamos
+\begin{equation}
+    \frac{dG}{dx} = \frac{\partial g}{\partial x} \frac{dx}{dx} + \frac{\partial g}{\partial y} \frac{dy}{dx}
+\end{equation}
+Mas, $G(x) = c$ onde \textbf{c} é uma constante e assim também temos
+\begin{equation}
+    \frac{dG}{dx} = 0 \textrm{ assim como } \frac{dx}{dx} = 1
+\end{equation}
+o que significa que ficamos com
+\begin{equation}
+     0 = \frac{\partial g}{\partial x} + \frac{\partial g}{\partial y} \frac{dy}{dx} 
+\end{equation}
+Reorganizar isso nos dá
+\begin{equation}
+    \frac{dy}{dx} = - \frac{\partial g/\partial x}{\partial g/\partial y}
+\end{equation}
+contanto que $g\textsubscript{y}(x,y) \neq 0$
+\par No exemplo anterior, \textbf{y} era uma função de \textbf{x} definida implicitamente pela equação $x\textsuperscript{2} - y = 7$. Encontramos $y'(x)$ usando o resultado acima.
+\par Como temos a equação $x\textsuperscript{2} - y = 7$ podemos escrever isso como $g(x,y) = c$ com $g(x,y) = x\textsuperscript{2} - y$ e $c = 7$. Usando o resultado acima podemos ver que
+\begin{equation}
+    \frac{\partial g}{\partial x} = 2 \textrm{ e }\frac{\partial g}{\partial y} = - 1
+\end{equation}
+o que significa que
+\begin{equation}
+    \begin{split}
+        \frac{dy}{dx} & = - \frac{\partial g/\partial x}{\partial g/\partial y} \\
+        & = - \frac{2x}{-1} \\
+        & = 2x
+    \end{split}
+\end{equation}
+Suponha que \textbf{y} seja uma função de \textbf{x} definida implicitamente pela equação
+\begin{equation}
+    x\textsuperscript{2}y\textsuperscript{3} - 6x\textsuperscript{3}y\textsuperscript{2} + 2xy = 1
+\end{equation}
+Verifique se o ponto $(x,y) = (1/2,2)$ satisfaz esta equação e encontre o valor da derivada, $y'(x)$, neste ponto.
+\par O ponto $(x,y) = (1/2,2)$ satisfaz a equação, pois, colocando $x = 1/2$ e $y = 2$ no lado esquerdo, obtemos
+\begin{equation}
+    \frac{1}{2}\textsuperscript{2}(2)\textsuperscript{3} - 6\textsuperscript{3}(2)\textsuperscript{3} - 6\frac{1}{2}\textsuperscript{3}(2)\textsuperscript{2} + 2\frac{1}{2}(2) = 1
+\end{equation}
+\par Vemos então que a equação que define \textbf{y} implicitamente como uma função de \textbf{x} é da forma $g(x,y) = 1$ onde $g(x,y) = x\textsuperscript{2}y\textsuperscript{3} - 6x\textsuperscript{3}y\textsuperscript{2}+2xy$. Então, de acordo com a fórmula dada acima, temos
+\begin{equation}
+    \begin{split}
+        \frac{dy}{dx} & = - \frac{\partial g/\partial x}{\partial g/\partial y} \\
+        \frac{\partial g}{\partial x}& = 2xy\textsuperscript{3} - 18x\textsuperscript{2}y\textsuperscript{2} + 2y \\
+        \frac{\partial g}{\partial y}& = 3x\textsuperscript{2}y\textsuperscript{2} + 12x\textsuperscript{3}y + 2x \\
+        \frac{dy}{dx} & = - \frac{2xy\textsuperscript{3} - 18x\textsuperscript{2}y\textsuperscript{2} + 2y}{3x\textsuperscript{2}y\textsuperscript{2} + 12x\textsuperscript{3}y + 2x}
+    \end{split}
+\end{equation}
+contanto que $3x\textsuperscript{2}y\textsuperscript{2} + 12x\textsuperscript{3}y + 2x \neq 0$.
+\par Assim, dado o ponto (1/2,2), podemos substituir esses valores em nossa expressão para $y'(x)$ para ver que o valor da derivada neste ponto é \textbf{6}.
 \end{document}
