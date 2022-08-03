@@ -618,4 +618,59 @@ Agora, $q\textsubscript{l}$ nos dá o produto marginal do trabalho, ou seja, med
 \par Em resumo, isso diz o seguinte.
 
 \par Em uma empresa com retornos constantes de escala, se recompensarmos cada fator de produção (por exemplo, capital e trabalho) em um nível igual ao seu produto marginal, então a recompensa total para os fatores de produção será a quantidade produzida.
+\section{Derivativos parciais de segunda ordem}
+\subsection*{Introdução}
+\par Se tivermos uma função $f(x,y)$, podemos usar a diferenciação parcial para encontrar as novas funções $f\textsubscript{x}(x,y)$ e $f\textsubscript{y}(x,y)$. Essas novas funções são chamadas de derivadas parciais de primeira ordem de $f$. No entanto, também é possível diferenciar parcialmente essas novas funções em relação a \textbf{x} e \textbf{y} para obter as derivadas parciais de segunda ordem de $f$. Obviamente, para uma função de duas variáveis, existem \textit{\textbf{quatro derivadas parciais}} de segunda ordem, ou seja, aquelas que são "não misturadas"
+\begin{equation}
+    \begin{split}
+        \frac{\partial\textsuperscript{2}f}{\partial x\textsuperscript{2}} & = \frac{\partial}{\partial x}(\frac{\partial f}{\partial x}) \\
+        \frac{\partial\textsuperscript{2}f}{\partial y\textsuperscript{2}} & = \frac{\partial}{\partial y}(\frac{\partial f}{\partial y}) 
+    \end{split}
+\end{equation}
+e as que são "mistas", 
+\begin{equation}
+    \begin{split}
+        \frac{\partial\textsuperscript{2}f}{\partial y \partial x} & = \frac{\partial}{\partial y}(\frac{\partial f}{\partial x}) \\
+        \frac{\partial\textsuperscript{2}f}{\partial x \partial y} & = \frac{\partial}{\partial x}(\frac{\partial f}{\partial y}) \\
+        f\textsubscript{xx} &= (f\textsubscript{x})\textsubscript{x} \\
+        f\textsubscript{yy} &= (f\textsubscript{y})\textsubscript{y} \\
+        f\textsubscript{xy} &= (f\textsubscript{x})\textsubscript{y} \\
+        f\textsubscript{yx} &= (f\textsubscript{y})\textsubscript{x} 
+    \end{split}
+\end{equation}
+Neste curso, descobriremos que a ordem de diferenciação parcial nas derivadas parciais mistas de segunda ordem não é importante, pois sempre teremos $f\textsubscript{xy} = f\textsubscript{yx}$. Em particular, esse fato pode servir como uma "verificação" útil quando estamos trabalhando com derivadas parciais de segunda ordem.
+\subsubsection*{Exemplo}
+Derivadas de \textbf{primera ordem} de $f(x,y) = x\textsuperscript{2}y + 5xy\textsuperscript{3} + y\textsuperscript{2}$ são:
+\begin{equation}
+    \begin{split}
+        f\textsubscript{x}(x,y) & = 2xy + 5y\textsuperscript{3} \\
+        f\textsubscript{y}(x,y) & = x\textsuperscript{2} + 15xy\textsuperscript{2} + 2y \\
+    \end{split}
+\end{equation}
+Dderivadas de \textbf{segunda ordem}:
+\begin{equation}
+    \begin{split}
+        f\textsubscript{xx}(x,y) & = 2y \\
+        f\textsubscript{yy}(x,y) & = 30xy + 2 \\
+        f\textsubscript{xy}(x,y) & = 2x + 15y\textsuperscript{2} \\
+        f\textsubscript{yx}(x,y) & = 2x + 15y\textsuperscript{2}
+    \end{split}
+\end{equation}
+\subsubsection*{Exemplo 2}
+Derivadas de \textbf{primera ordem} de $f(x,y) = 3x\textsuperscript{3} + 7xy\textsuperscript{-1} + 2y\textsuperscript{9}$ são:
+\begin{equation}
+    \begin{split}
+        f\textsubscript{x}(x,y) & = 9x\textsuperscript{2} + 7y\textsuperscript{-1} \\
+        f\textsubscript{y}(x,y) & = -7xy\textsuperscript{-2} + 18y\textsuperscript{8} \\
+    \end{split}
+\end{equation}
+Dderivadas de \textbf{segunda ordem}:
+\begin{equation}
+    \begin{split}
+        f\textsubscript{xx}(x,y) & = 18x \\
+        f\textsubscript{yy}(x,y) & = 14xy\textsuperscript{-3} + 144y\textsuperscript{7} \\
+        f\textsubscript{xy}(x,y) & = -7y\textsuperscript{-2} \\
+        f\textsubscript{yx}(x,y) & = -7y\textsuperscript{-2}
+    \end{split}
+\end{equation}
 \end{document}
